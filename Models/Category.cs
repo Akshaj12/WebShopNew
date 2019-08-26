@@ -19,6 +19,10 @@ namespace webshop.Models
 
     public class ProductCategory
     {
+        ProductCategory()
+        {
+
+        }
         [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }

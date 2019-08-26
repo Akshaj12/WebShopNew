@@ -76,10 +76,11 @@ namespace webshop.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            _context.Orders.Add(order);
+            Order o = new Order(order.Id, order.Status, order.Customer, order.DeliveryAddress, order.BillingAddress, order.OrderTime);
+            _context.Orders.Add(o);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+            return base.CreatedAtAction("GetOrder", new { id = o.Id }, o);
         }
 
         // DELETE: api/Orders/5

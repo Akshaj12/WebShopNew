@@ -30,19 +30,37 @@ namespace webshop.Controllers
         }
 
         // GET: api/Products/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Product>> GetProduct(int id)
+        //{
+        //    var product = await _context.Products.FindAsync(id);
+
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return product;
+        //}
+
+        // GET: api/Products/6
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<IEnumerable<Product>>> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-
-            if (product == null)
+            List<Product> tlistFiltered = new List<Product>();
+            List<Product> products = await _context.Products.ToListAsync();
+            foreach (Product product in products)
             {
-                return NotFound();
-            }
+                if (product.ParentCategoryId == id)
+                {
+                    tlistFiltered.Add(product);
+                }
 
-            return product;
+            }
+            return tlistFiltered;
         }
 
+       
         // PUT: api/Products/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)

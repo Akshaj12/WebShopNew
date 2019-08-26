@@ -73,23 +73,23 @@ namespace webshop.Data
 
         
         modelBuilder.Entity<Product>().HasData(
-          new Product() { Id = 1, Name = "Nike Sneakers",Price= 700, Description= "Freshen Up Your Look At Nike!"},
-          new Product() { Id = 2, Name = "Lee Cooper", Price = 700, Description = "Freshen Up Your Look !" },
-          new Product() { Id = 3, Name = "Red tape", Price = 700  , Description = "better quality!" },
-           new Product() { Id = 4, Name = "Belts", Price = 400, Description = "Smart Look !" },
-          new Product() { Id = 5, Name = "Perfume", Price = 550, Description = " Perfume !" },
-          new Product() { Id = 6, Name = "Sunglasses", Price = 1200, Description = "better quality!" },
-           new Product() { Id = 7, Name = "Jackets", Price = 700, Description = "Freshen Up Your Look At Nike!" },
-          new Product() { Id = 8, Name = "Pants", Price = 700, Description = "Perfume !" },
-          new Product() { Id = 9, Name = "Shirts", Price = 700, Description = "better quality!" }
+          new Product() { Id = 1, Name = "Nike Sneakers",Price= 700, Description= "Freshen Up Your Look At Nike!", ParentCategoryId =1 },
+          new Product() { Id = 2, Name = "Lee Cooper", Price = 700, Description = "Freshen Up Your Look !" , ParentCategoryId = 1 },
+          new Product() { Id = 3, Name = "Red tape", Price = 700  , Description = "better quality!", ParentCategoryId = 1 },
+           new Product() { Id = 4, Name = "Belts", Price = 400, Description = "Smart Look !", ParentCategoryId = 2 },
+          new Product() { Id = 5, Name = "Perfume", Price = 550, Description = " Perfume !", ParentCategoryId = 2 },
+          new Product() { Id = 6, Name = "Sunglasses", Price = 1200, Description = "better quality!", ParentCategoryId = 2 },
+           new Product() { Id = 7, Name = "Jackets", Price = 700, Description = "Freshen Up Your Look At Nike!", ParentCategoryId = 3 },
+          new Product() { Id = 8, Name = "Pants", Price = 700, Description = "Perfume !", ParentCategoryId = 3 },
+          new Product() { Id = 9, Name = "Shirts", Price = 700, Description = "better quality!", ParentCategoryId = 3 }
 
         //  ProductCategories =  (ICollection<ProductCategory>) 
         //new List<ProductCategory>() { new ProductCategory() { CategoryId = 3, ProductId = 1, Relevance = 100 } } }
         );
 
-            modelBuilder.Entity<ProductCategory>().HasData(
-              new ProductCategory() { CategoryId = 3, ProductId = 1, Relevance = 100 }
-            );
+            //modelBuilder.Entity<ProductCategory>().HasData(
+            //  new ProductCategory() { CategoryId = 3, ProductId = 1, Relevance = 100 }
+            //);
 
             //modelBuilder.Entity<Category>(b =>
             //{
@@ -115,6 +115,7 @@ namespace webshop.Data
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<webshop.Models.ProductDetails> ProductDetails { get; set; }
     //public DbSet<Store> Stores { get; set; }
   }
 } 

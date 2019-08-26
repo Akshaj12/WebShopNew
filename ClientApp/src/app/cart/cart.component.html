@@ -1,27 +1,64 @@
 <h3>Cart</h3>
 
-<div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.name }}</span>
-  <span>{{ item.price }}</span>
-  <span>{{ item.quantity }}</span>
-  
-  
-</div>
-<!--<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+<table>
+
+  <tr>&nbsp;&nbsp;</tr>
+
+  <strong>
+    Customer Details &nbsp;&nbsp;&nbsp;&nbsp;
+  </strong>
+  <tr>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+      <div class="cart-item" *ngFor="let item of items">
+        <tr>
+          <strong>Name:</strong> &nbsp;&nbsp;
+          <span>{{ item.name }}</span>&nbsp;&nbsp;
+        </tr>
+        <tr>
+          <strong>
+            Price:
+          </strong>&nbsp;&nbsp;
+          <span>{{ item.price }}</span>&nbsp;&nbsp;
+        </tr>
+        <tr>
+          <strong>
+            Quantiry
+          </strong>&nbsp;&nbsp;
+          <span>{{ item.quantity }}</span>&nbsp;&nbsp;
+        </tr>
+
+  </div>
   <div>
     <label for="name">
       Name
-    </label>
+    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input id="name" type="text" formControlName="name">
   </div>
-
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <div>
     <label for="address">
-      Address
-    </label>
+      Delivery Address
+    </label>&nbsp;&nbsp;&nbsp;
     <input id="address" type="text" formControlName="address">
+    <label for="cardNumber">
+      Card Number
+    </label>&nbsp;&nbsp;&nbsp;
+    <input id="cardNumber" type="text" formControlName="cardNumber">
   </div>
+  <select formControlName="name">
+    <option disabled>Select Oppo Suits</option>
+    <option>Choose oppo suit</option>
+    <option *ngFor="let suit of oppoSuits">{{suit}}</option>
+  </select>
+  <select formControlName="name">
+    <option disabled>Select size</option>
+    <option>Choose size </option>
+    <option *ngFor="let size of sizes">{{size}}</option>
+  </select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button (click)="onSubmit(customerData)">Purchase</button>
+  </form>
+  </tr>
+</table>
 
-  <button class="button" type="submit">Purchase</button>
-
-</form>-->

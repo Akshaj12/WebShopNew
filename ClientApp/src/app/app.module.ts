@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +12,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { CategoriesComponent } from './categories/categories.component';
+
 
 import { CustomersComponent } from 'src/app/customers/customers.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -34,13 +34,14 @@ import { CartComponent } from './cart/cart.component';
     ProductsComponent,
     ProductAlertsComponent,
     ProductDetailsComponent,
-    CartComponent
+        CartComponent
     ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
-    ApiAuthorizationModule,
+      ApiAuthorizationModule,
+      FormsModule,
+      ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -49,7 +50,8 @@ import { CartComponent } from './cart/cart.component';
       { path: 'customers', component: CustomersComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'products', component: ProductsComponent },
-      { path: 'products/:productId', component: ProductDetailsComponent },
+      { path: 'products/:cateogryId', component: ProductsComponent },
+      { path: 'productdetails/:productId', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
     ])
   ],
