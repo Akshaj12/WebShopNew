@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject} from '@angular/core';
 import { OrdersComponent } from './orders/orders.component';
 import { HttpClient } from "@angular/common/http";
 
@@ -8,11 +8,12 @@ import { HttpClient } from "@angular/common/http";
 export class CartService {
     items: CartItem[] = [];
     formData: OrdersComponent;
-    readonly rootURL ="https://localhost:44323/api"
+    rootURL;
+    order: Order;
     addToCart(product) {
         this.items.push(product);
         console.log(this.items);
-    }
+    } 
         
     getItems() {
         return this.items;
@@ -22,9 +23,14 @@ export class CartService {
         this.items = [];
         return this.items;
     }
-    constructor(private http: HttpClient) { }
-    postOrder(fromData: OrdersComponent) {
-        this.http.post(this.rootURL + '/Order', fromData);
+    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+        this.rootURL = baseUrl;}
+    postOrder() {
+        
+        this.http.post(this.rootURL + '/orders', this.order).subscribe (res => {
+            const response = res.toString
+        }
+);
     }
 }
 
@@ -45,6 +51,36 @@ export interface CartItem {
     //customer: Customer,
     quantity: number,
 
+}
+interface Order {
+    Id: number;
+    Status: string;
+     DeliveryAddress: string;
+    BillingAddress: string;
+    OrderTime: string;
+}
+
+export class Orders {
+    Id: number;
+    Status: string;
+    DeliveryAddress: string;
+    BillingAddress: string;
+    OrderTime: string;
+
+    constructor(public id: number,
+        public status: string,
+        public deliveryAddress: string,
+        public billingAddress: string,
+        public orderTime: string) {
+
+        this.Id = id;
+        this.Status = status;
+        this.DeliveryAddress = deliveryAddress;
+        this.BillingAddress = billingAddress;
+        this.OrderTime = orderTime;
+    }
+
+    
 }
 
 

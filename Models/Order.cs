@@ -9,22 +9,22 @@ namespace webshop.Models
 {
     public class Order
     {
-        public Order ( int id,OrderStatus status, Customer customer, Address deliveryAddress, Address billingAddress, DateTime orderTime)
+        public Order ( int id,string status, string deliveryAddress, string billingAddress, string orderTime)
 	{
             Id = id;
             Status = status;
-            Customer = customer;
+            //Customer = customer;
             DeliveryAddress = deliveryAddress;
             BillingAddress = billingAddress;
             OrderTime = orderTime;
         }
       public int Id { get; set; }
-      public OrderStatus Status { get; set; }
-      public Customer Customer { get; set; }
-      public Address DeliveryAddress { get; set; }
-      public Address BillingAddress { get; set; }
-      [DataType(DataType.Date)]
-      public DateTime OrderTime { get; set; }
+      public string Status { get; set; }
+     // public Customer Customer { get; set; }
+      public string DeliveryAddress { get; set; }
+      public string BillingAddress { get; set; }
+      //[DataType(DataType.Date)]
+      public string OrderTime { get; set; }
 
 
       public ICollection<OrderItem> Products { get; set; }

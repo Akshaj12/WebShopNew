@@ -26,7 +26,8 @@ export class ProductDetailsComponent implements OnInit {
         http.get<Product>(baseUrl + 'api/productdetails/' + this.productnumber).subscribe(result => { 
             this.product = result;
             console.log(result);
-    }, error => console.error(error));
+        }, error => console.error(error));
+                
 }
 
     addToCart(product) {

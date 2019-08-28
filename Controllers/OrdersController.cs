@@ -12,7 +12,7 @@ namespace webshop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public class  OrdersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
@@ -76,11 +76,11 @@ namespace webshop.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            Order o = new Order(order.Id, order.Status, order.Customer, order.DeliveryAddress, order.BillingAddress, order.OrderTime);
-            _context.Orders.Add(o);
+            //Order o = new Order(order.Id, order.Status, order.Customer, order.DeliveryAddress, order.BillingAddress, order.OrderTime);
+            _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            return base.CreatedAtAction("GetOrder", new { id = o.Id }, o);
+            return base.CreatedAtAction("GetOrder", new { id = order.Id }, order);
         }
 
         // DELETE: api/Orders/5

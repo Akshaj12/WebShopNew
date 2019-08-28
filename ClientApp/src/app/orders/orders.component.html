@@ -9,9 +9,8 @@
     <tr>
       <th>ID</th>
       <th>Status</th>
-      <th>Customer ID</th>
-      <th>Delivery Address ID</th>
-      <th>Billing Address ID</th>
+       <th>Delivery Address </th>
+      <th>Billing Address </th>
       <th>OrderTime</th>
     </tr>
   </thead>
@@ -19,9 +18,8 @@
     <tr *ngFor="let category of categories">
       <td>{{ order.id }}</td>
       <td>{{ order.status }}</td>
-      <td>{{ order.customerId }}</td>
-      <td>{{ order.deliveryaddressId }}</td>
-      <td>{{ order.billingaddressId }}</td>
+       <td>{{ order.deliveryaddress }}</td>
+      <td>{{ order.billingaddress }}</td>
       <td>{{ order.ordertime }}</td>
     </tr>
   </tbody>

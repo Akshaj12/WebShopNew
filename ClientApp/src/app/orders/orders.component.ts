@@ -23,7 +23,7 @@ export class OrdersComponent implements OnInit {
 
 }
 
-interface Order{
+export interface Order{
   Id: number,
   Status: string,
   CustomerId: number,

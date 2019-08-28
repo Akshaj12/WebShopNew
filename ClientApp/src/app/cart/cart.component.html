@@ -8,27 +8,43 @@
     Customer Details &nbsp;&nbsp;&nbsp;&nbsp;
   </strong>
   <tr>
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" autocomplete="off">
 
       <div class="cart-item" *ngFor="let item of items">
-        <tr>
-          <strong>Name:</strong> &nbsp;&nbsp;
-          <span>{{ item.name }}</span>&nbsp;&nbsp;
-        </tr>
-        <tr>
-          <strong>
-            Price:
-          </strong>&nbsp;&nbsp;
-          <span>{{ item.price }}</span>&nbsp;&nbsp;
-        </tr>
-        <tr>
-          <strong>
-            Quantiry
-          </strong>&nbsp;&nbsp;
-          <span>{{ item.quantity }}</span>&nbsp;&nbsp;
-        </tr>
+  <tr>
+    <strong>Name:</strong> &nbsp;&nbsp;
+    <span>{{ item.name }}</span>&nbsp;&nbsp;
+  </tr>
+  <tr>
+    <strong>
+      Price:
+    </strong>&nbsp;&nbsp;
+    <span>{{ item.price }}</span>&nbsp;&nbsp;
+  </tr>
+  <tr>
+    <strong>
+      Quantity
+    </strong>&nbsp;&nbsp;
+    <span>{{ item.quantity }}</span>&nbsp;&nbsp;
+  </tr>
+  <select formControlName="name">
+    <option disabled>Select Oppo Suits</option>
+    <option>Choose oppo suit</option>
+    <option *ngFor="let suit of oppoSuits">{{suit}}</option>
+  </select>
+  <select formControlName="name">
+    <option disabled>Select size</option>
+    <option>Choose size </option>
+    <option *ngFor="let size of sizes">{{size}}</option>
+  </select>
 
+  <select formControlName="name">
+    <option disabled>Select card details</option>
+    <option>Choose card detail</option>
+    <option *ngFor="let detail of cardDetails">{{detail}}</option>
+  </select>
   </div>
+
   <div>
     <label for="name">
       Name
@@ -41,23 +57,20 @@
       Delivery Address
     </label>&nbsp;&nbsp;&nbsp;
     <input id="address" type="text" formControlName="address">
+    <strong>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      PaymentDetails
+    </strong>&nbsp;&nbsp;
     <label for="cardNumber">
       Card Number
     </label>&nbsp;&nbsp;&nbsp;
     <input id="cardNumber" type="text" formControlName="cardNumber">
   </div>
-  <select formControlName="name">
-    <option disabled>Select Oppo Suits</option>
-    <option>Choose oppo suit</option>
-    <option *ngFor="let suit of oppoSuits">{{suit}}</option>
-  </select>
-  <select formControlName="name">
-    <option disabled>Select size</option>
-    <option>Choose size </option>
-    <option *ngFor="let size of sizes">{{size}}</option>
-  </select>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <button (click)="onSubmit(customerData)">Purchase</button>
+
+    &nbsp;&nbsp;&nbsp;
+
+
+  <button (click)="onSubmit(checkoutForm)">Purchase</button>
   </form>
   </tr>
 </table>

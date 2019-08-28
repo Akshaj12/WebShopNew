@@ -58,13 +58,13 @@ namespace webshop.Data
           b.HasOne(c => c.SavedAddress);
         });
 
-        modelBuilder.Entity<Order>(b =>
-        {
-            b.HasOne(o => o.Customer);
-            b.HasOne(o => o.BillingAddress);
-            b.HasOne(o => o.DeliveryAddress);
-            b.HasMany(o => o.Products);
-        });
+        //modelBuilder.Entity<Order>(b =>
+        //{
+        //    b.HasOne(o => o.Customer);
+        //    b.HasOne(o => o.BillingAddress);
+        //    b.HasOne(o => o.DeliveryAddress);
+        //    b.HasMany(o => o.Products);
+        //});
 
         modelBuilder.Entity<OrderItem>(b =>
         {
