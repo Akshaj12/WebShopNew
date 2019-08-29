@@ -9,16 +9,7 @@ namespace webshop.Models
 {
     public class Order
     {
-        public Order ( int id,string status, string deliveryAddress, string billingAddress, string orderTime)
-	{
-            Id = id;
-            Status = status;
-            //Customer = customer;
-            DeliveryAddress = deliveryAddress;
-            BillingAddress = billingAddress;
-            OrderTime = orderTime;
-        }
-      public int Id { get; set; }
+       public int Id { get; set; }
       public string Status { get; set; }
      // public Customer Customer { get; set; }
       public string DeliveryAddress { get; set; }

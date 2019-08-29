@@ -5,7 +5,7 @@
   <tr>&nbsp;&nbsp;</tr>
 
   <strong>
-    Customer Details &nbsp;&nbsp;&nbsp;&nbsp;
+    Cart Details &nbsp;&nbsp;&nbsp;&nbsp;
   </strong>
   <tr>
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" autocomplete="off">
@@ -27,24 +27,29 @@
     </strong>&nbsp;&nbsp;
     <span>{{ item.quantity }}</span>&nbsp;&nbsp;
   </tr>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <select formControlName="name">
     <option disabled>Select Oppo Suits</option>
     <option>Choose oppo suit</option>
     <option *ngFor="let suit of oppoSuits">{{suit}}</option>
   </select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <select formControlName="name">
     <option disabled>Select size</option>
     <option>Choose size </option>
     <option *ngFor="let size of sizes">{{size}}</option>
   </select>
 
-  <select formControlName="name">
+  <!--<select formControlName="name">
     <option disabled>Select card details</option>
     <option>Choose card detail</option>
     <option *ngFor="let detail of cardDetails">{{detail}}</option>
-  </select>
+  </select>-->
   </div>
-
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>
+    Customer Details &nbsp;&nbsp;&nbsp;&nbsp;
+  </strong>
   <div>
     <label for="name">
       Name
@@ -59,6 +64,7 @@
     <input id="address" type="text" formControlName="address">
     <strong>
       &nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;
       PaymentDetails
     </strong>&nbsp;&nbsp;
     <label for="cardNumber">
@@ -66,8 +72,15 @@
     </label>&nbsp;&nbsp;&nbsp;
     <input id="cardNumber" type="text" formControlName="cardNumber">
   </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    &nbsp;&nbsp;&nbsp;
+  <select formControlName="name">
+    <option disabled>Select card details</option>
+    <option>Choose card detail</option>
+    <option *ngFor="let detail of cardDetails">{{detail}}</option>
+  </select>
+
+  &nbsp;&nbsp;&nbsp;
 
 
   <button (click)="onSubmit(checkoutForm)">Purchase</button>

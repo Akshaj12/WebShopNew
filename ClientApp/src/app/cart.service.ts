@@ -23,16 +23,7 @@ export class CartService {
         this.items = [];
         return this.items;
     }
-    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-        this.rootURL = baseUrl;}
-    postOrder() {
-        
-        this.http.post(this.rootURL + '/orders', this.order).subscribe (res => {
-            const response = res.toString
-        }
-);
     }
-}
 
 export interface Product {
     id: number,

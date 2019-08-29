@@ -12,6 +12,7 @@ import { CartService, Product } from '../cart.service';
 export class ProductDetailsComponent implements OnInit {
     public product: Product;
     productnumber: number;
+
     //constructor(private route: ActivatedRoute, private cartService: CartService) {
     //    console.log(cartService.getItems);
     //}

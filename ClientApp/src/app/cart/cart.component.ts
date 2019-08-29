@@ -41,17 +41,29 @@ export class CartComponent implements OnInit{
             cardNumber: '',
             itemDetails: this.items
         });
-
-        http.post(this.url + '/api/Orders', this.order).subscribe(res => {
-            const response = res.toString
-        }
-        );
+               
     }
     onSubmit(checkoutForm)
     {
+        var address = (<HTMLInputElement>document.getElementById("address")).value;
+        var name = (<HTMLInputElement>document.getElementById("name")).value;
+        var cardNumber = (<HTMLInputElement>document.getElementById("cardNumber")).value; 
+        let headers = new Headers({ 'Content-Type': 'application/json' });
 
-        console.log('Your order has been submitted', checkoutForm.address);
-        this.insertRecord(checkoutForm);
+        var obj = {};
+        obj['status'] = "Delivered";
+        obj['deliveryAddress'] = address;
+        obj['billingAddress'] = address;
+        obj['orderTime'] = "9:00";
+        obj['products'] = null;
+
+        //let obj: Order = JSON.parse('{"status": "Delivered", "deliveryAddress": address,"billingAddress": address,"orderTime": "9:00","products": null}');
+        this.https.post('https://localhost:44323/api/Orders', obj).subscribe(
+            data => console.log("success!", data),
+            error => console.error("couldn't post because", error)
+        );
+
+        this.checkoutForm.reset();
 
      
 
@@ -60,18 +72,11 @@ export class CartComponent implements OnInit{
     }
  
 
-    insertRecord(checkoutForm) {
-        
-        this.order = new Orders(1, "Delivered", "Gothenburg", "Gothenburg", "2019");
+    insertRecord( name,  address, cardNumber ) {
+        //var address = checkoutForm.get('address')
+        //this.order = new Orders(1, "Delivered", "Gothenburg", "Gothenburg", "2019");
         //this.cartService.postOrder();
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let obj: Order = JSON.parse('{ "Id": 1, "Status": "Delivered","DeliveryAddress" : "Gothenbrug", "BillingAddress" : "Mild", "OrderTime" : "2019"}');
-        this.https.post('https://localhost:44323/api/Orders', obj).subscribe(res => {
-            const response = res.toString
-        }
-        );
-        //this.cartService.postOrder(this.order);
-        this.checkoutForm.reset();
+        
     }
     resetForm(checkoutForm: any) {
         throw new Error("Method not implemented.");
