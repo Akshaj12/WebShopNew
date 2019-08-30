@@ -1,28 +1,30 @@
-<h2>Product Details</h2>
-
 
 <div *ngIf="product">
   <table>
-  <tr>
-    <td>
-      <h3>Product: {{ product.name }}</h3>
-      <h3>Id: {{ product.id }}</h3>
-      <h3>Price: {{ product.price }}</h3>
-      <h3>Description: {{ product.description }}</h3>
-    </td>
-    <td>
-      <div style="display: flex; justify-content: right;">
-      <img src="assets/Images/{{ product.image }}" style="width: 500px; height: 400px;" />
-        <img src="assets/Images/{{ product.image1 }}" style="width: 500px; height: 400px;" />
-        <img src="assets/Images/{{ product.image2 }}" style="width: 500px; height: 400px;" />
-      </div>
-    </td>
-</tr>
-  <tr>
-      
-    <td>
-      <button (click)="addToCart(product)">Add To Cart</button>
-    </td>
-  </tr>
+    <tr>
+      <td>
+        <div style="display: flex; justify-content: right;">
+          <img src="assets/Images/{{ product.image }}" style="width: 500px; height: 400px;" />
+        </div>
+      </td>
+      <td>
+        <h3>Product: {{ product.name }}</h3>
+        <h4>Price: {{ product.price }}</h4>
+        <h5>Description: {{ product.description }}</h5>
+        <p>
+          <select formControlName="name">
+            <option>Choose color</option>
+            <option *ngFor="let color of colors">{{color}}</option>
+          </select>
+        </p>
+        <p>
+          <select formControlName="name">
+            <option>Choose size</option>
+            <option *ngFor="let size of sizes">{{size}}</option>
+          </select>
+        </p>
+        <button type="button" class="btn btn-success" (click)="addToCart(product)">Add To Cart</button>
+      </td>
+    </tr>
 </table>
 </div>

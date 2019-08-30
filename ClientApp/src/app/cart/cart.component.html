@@ -1,92 +1,38 @@
-<h3>Cart</h3>
+<h3>Cart contents</h3>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" autocomplete="off">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <td>Article</td>
+        <td>Quantity</td>
+        <td>Size</td>
+        <td>Type</td>
+        <td>Price</td>
+        <td>Delete</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="cart-item" *ngFor="let item of items; index as cartItem">
+        <td>{{ item.name }}</td>
+        <td><input type="text"value="1" size="2"></td>
+        <td>
+          <select formControlName="name">
+            <option>Select size</option>
+            <option *ngFor="let size of sizes">{{size}}</option>
+          </select>
+        </td>
+        <td>
+          <select formControlName="name">
+            <option>Choose type</option>
+            <option *ngFor="let suit of oppoSuits">{{suit}}</option>
+          </select>
+        </td>
+        <td>{{ item.price }}</td>
+        <td><button type="button" class="btn btn-danger" (click)="onRemove(cartItem)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-info" (click)="onSubmit(checkoutForm)">Purchase</button>
+</form>
 
-<table>
-
-  <tr>&nbsp;&nbsp;</tr>
-
-  <strong>
-    Cart Details &nbsp;&nbsp;&nbsp;&nbsp;
-  </strong>
-  <tr>
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" autocomplete="off">
-
-      <div class="cart-item" *ngFor="let item of items; index as cartItem">
-  <tr>
-    <strong>Name:</strong> &nbsp;&nbsp;
-    <span>{{ item.name }}</span>&nbsp;&nbsp;
-  </tr>
-  <tr>
-    <strong>
-      Price:
-    </strong>&nbsp;&nbsp;
-    <span>{{ item.price }}</span>&nbsp;&nbsp;
-  </tr>
-  <tr>
-    <strong>
-      Quantity
-    </strong>&nbsp;&nbsp;
-    <span>{{ item.quantity }}</span>&nbsp;&nbsp;
-  </tr>
-
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <select formControlName="name">
-    <option disabled>Select Oppo Suits</option>
-    <option>Choose oppo suit</option>
-    <option *ngFor="let suit of oppoSuits">{{suit}}</option>
-  </select>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <select formControlName="name">
-    <option disabled>Select size</option>
-    <option>Choose size </option>
-    <option *ngFor="let size of sizes">{{size}}</option>
-  </select>
-
-  <!--<select formControlName="name">
-    <option disabled>Select card details</option>
-    <option>Choose card detail</option>
-    <option *ngFor="let detail of cardDetails">{{detail}}</option>
-  </select>-->
-  <button (click)="onRemove(cartItem)">Remove Item</button>
-  </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>
-    Customer Details &nbsp;&nbsp;&nbsp;&nbsp;
-  </strong>
-  <div>
-    <label for="name">
-      Name
-    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="name" type="text" formControlName="name">
-  </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <div>
-    <label for="address">
-      Delivery Address
-    </label>&nbsp;&nbsp;&nbsp;
-    <input id="address" type="text" formControlName="address">
-    <strong>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      PaymentDetails
-    </strong>&nbsp;&nbsp;
-    <label for="cardNumber">
-      Card Number
-    </label>&nbsp;&nbsp;&nbsp;
-    <input id="cardNumber" type="text" formControlName="cardNumber">
-  </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-  <select formControlName="name">
-    <option disabled>Select card details</option>
-    <option>Choose card detail</option>
-    <option *ngFor="let detail of cardDetails">{{detail}}</option>
-  </select>
-
-  &nbsp;&nbsp;&nbsp;
-
-
-  <button (click)="onSubmit(checkoutForm)">Purchase</button>
-  </form>
-  </tr>
-</table>
 

@@ -18,6 +18,7 @@ export class CartComponent implements OnInit{
     items: CartItem[];
     oppoSuits;
     sizes;
+    colors;
     cardDetails;
     checkoutForm;
     https: HttpClient;
@@ -37,6 +38,7 @@ export class CartComponent implements OnInit{
         this.url = baseUrl;
         this.oppoSuits = ['Men', 'Women', 'Boys', 'Girls'];
         this.sizes = [34, 36, 38, 40, 42];
+        this.colors = ['Black', 'Red', 'Brown', 'White', 'Navy blue'];
         this.cardDetails = ['Master', 'Visa', 'Debit', 'Swish'];
         var storedNames = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
         this.items = storedNames;

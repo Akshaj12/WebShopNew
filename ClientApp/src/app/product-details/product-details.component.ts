@@ -13,18 +13,26 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 export class ProductDetailsComponent implements OnInit {
     public product: Product;
     productnumber: number;
+    colors;
+    sizes;
     items: CartItem[] = [];
     STORAGE_KEY = 'cart_Items';
     images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+
     //constructor(private route: ActivatedRoute, private cartService: CartService) {
     //    console.log(cartService.getItems);
     //}
+
+
 
     constructor(private route: ActivatedRoute, private cartService: CartService, http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
         this.route.paramMap.subscribe(params => {
             this.productnumber = +params.get('productId');
         });
+
+        this.colors = ['Black', 'Red', 'Brown', 'White', 'Navy blue'];
+        this.sizes = [34, 36, 38, 40, 42];
 
         console.log(cartService.getItems)
         http.get<Product>(baseUrl + 'api/productdetails/' + this.productnumber).subscribe(result => {
