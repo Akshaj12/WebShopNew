@@ -73,15 +73,15 @@ namespace webshop.Data
 
         
         modelBuilder.Entity<Product>().HasData(
-          new Product() { Id = 1, Name = "Nike Sneakers",Price= 700,Image = "Shoes/NIKE.jpg" , Description = "Freshen Up Your Look At Nike!", ParentCategoryId =1 },
-          new Product() { Id = 2, Name = "Lee Cooper", Price = 700, Image = "Shoes/Lee Cooper.jpg", Description = "Freshen Up Your Look !" , ParentCategoryId = 1 },
-          new Product() { Id = 3, Name = "Red tape", Price = 700  , Image = "Shoes/BlackShoes.jpg", Description = "better quality!", ParentCategoryId = 1 },
-           new Product() { Id = 4, Name = "Belts", Price = 400, Image = "Belts/Boss.jpg", Description = "Smart Look !", ParentCategoryId = 2 },
-          new Product() { Id = 5, Name = "Perfume", Price = 550, Image =  "Perfume/Armani.jpg" , Description = " Perfume !", ParentCategoryId = 2 },
-          new Product() { Id = 6, Name = "Sunglasses", Price = 1200, Image = "Sunglasses/Gucci.jpg" , Description = "better quality!", ParentCategoryId = 2 },
-           new Product() { Id = 7, Name = "Jackets", Price = 700, Image = "Jacket/Barbour.jpg" , Description = "Freshen Up Your Look !", ParentCategoryId = 3 },
-          new Product() { Id = 8, Name = "Pants", Price = 700, Image = "Pants/Jeans.jpg" , Description = "Comfortable !", ParentCategoryId = 3 },
-          new Product() { Id = 9, Name = "Shirts", Price = 700, Image =  "Shirts/Shirt.jpg" , Description = "better quality!", ParentCategoryId = 3 }
+          new Product() { Id = 1, Name = "Nike Sneakers",Price= 700,Image = "Shoes/NIKE.jpg" , Image1 = "Shoes/Nike1.jpg", Image2 = "Shoes/Nike2.jpg", Description = "Freshen Up Your Look At Nike!", ParentCategoryId =1 },
+          new Product() { Id = 2, Name = "Lee Cooper", Price = 700, Image = "Shoes/Lee Cooper.jpg", Image1 = "Shoes/LeeCooper1.jpg", Image2 = "Shoes/CasualShoes.jpg", Description = "Freshen Up Your Look !" , ParentCategoryId = 1 },
+          new Product() { Id = 3, Name = "Red tape", Price = 700  , Image = "Shoes/BlackShoes.jpg", Image1 = "Shoes/Redtape1.jpg", Image2 = "Shoes/Redtape.jpg", Description = "better quality!", ParentCategoryId = 1 },
+           new Product() { Id = 4, Name = "Belts", Price = 400, Image = "Belts/Boss.jpg", Image1 = "Belts/TommyHelfigure.jpg", Image2 = "Belts/TigerofSweden.jpg", Description = "Smart Look !", ParentCategoryId = 2 },
+          new Product() { Id = 5, Name = "Perfume", Price = 550, Image =  "Perfume/Armani.jpg", Image1 = "Perfume/HugoBoss.jpg", Image2 = "Perfume/Doles&Gabana.jpg", Description = " Perfume !", ParentCategoryId = 2 },
+          new Product() { Id = 6, Name = "Sunglasses", Price = 1200, Image = "Sunglasses/Gucci.jpg", Image1 = "Sunglasses/Raybon.jpg", Image2 = "Shoes/Raybon_New.jpg", Description = "better quality!", ParentCategoryId = 2 },
+           new Product() { Id = 7, Name = "Jackets", Price = 700, Image = "Jacket/Barbour.jpg", Image1 = "Jacket/CanadaGoose.jpg", Image2 = "Jacket/JacketCanada.jpg", Description = "Freshen Up Your Look !", ParentCategoryId = 3 },
+          new Product() { Id = 8, Name = "Pants", Price = 700, Image = "Pants/Jeans.jpg", Image1 = "Pants/Khakee.jpg", Image2 = "Pants/Maroon.jpg", Description = "Comfortable !", ParentCategoryId = 3 },
+          new Product() { Id = 9, Name = "Shirts", Price = 700, Image =  "Shirts/Shirt.jpg", Image1 = "Shirts/RalphLaurenWhite.jpg", Image2 = "Shirts/RalphLauren.jpg", Description = "better quality!", ParentCategoryId = 3 }
         //  ProductCategories =  (ICollection<ProductCategory>) 
         //new List<ProductCategory>() { new ProductCategory() { CategoryId = 3, ProductId = 1, Relevance = 100 } } }
         );

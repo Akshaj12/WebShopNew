@@ -35,7 +35,6 @@
     <Compile Remove="Migrations\20190819123313_Initial.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClientApp\src\assets\Images\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

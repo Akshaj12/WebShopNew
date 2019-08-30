@@ -12,6 +12,8 @@ namespace webshop.Models
         public int Price { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
         public int? ParentCategoryId { get; set; }
         public ICollection<ProductCategory> ProductCategories { get; set; }
     }
