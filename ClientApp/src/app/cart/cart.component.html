@@ -14,7 +14,7 @@
     <tbody>
       <tr class="cart-item" *ngFor="let item of items; index as cartItem">
         <td>{{ item.name }}</td>
-        <td><input type="text"value="1" id="quantity_{{ item.name }}"></td>
+        <td><input type="text"value="1" size="2"></td>
         <td>
           <select formControlName="name">
             <option>Select size</option>
@@ -27,7 +27,7 @@
             <option *ngFor="let suit of oppoSuits">{{suit}}</option>
           </select>
         </td>
-        <td>{{ item.price * 2 }}</td>
+        <td>{{ item.price }}</td>
         <td><button type="button" class="btn btn-danger" (click)="onRemove(cartItem)">Remove</button></td>
       </tr>
     </tbody>
