@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StorageServiceModule } from 'ngx-webstorage-service';
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,42 +26,46 @@ import { CartComponent } from './cart/cart.component';
 import { Orders, CartService } from './cart.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
-    CategoriesComponent,
-    CustomersComponent,
-    OrdersComponent,
-    ProductsComponent,
-    ProductAlertsComponent,
-    ProductDetailsComponent,
+    declarations: [
+        AppComponent,
+        NavMenuComponent,
+        HomeComponent,
+        CounterComponent,
+        FetchDataComponent,
+        CategoriesComponent,
+        CustomersComponent,
+        OrdersComponent,
+        ProductsComponent,
+        ProductAlertsComponent,
+        ProductDetailsComponent,
         CartComponent
     ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-      ApiAuthorizationModule,
-      FormsModule,
-      ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'categories', component: CategoriesComponent }, // canActivate: [AuthorizeGuard] },
-      { path: 'customers', component: CustomersComponent },
-      { path: 'orders', component: OrdersComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'products/:cateogryId', component: ProductsComponent },
-      { path: 'productdetails/:productId', component: ProductDetailsComponent },
-      { path: 'cart', component: CartComponent },
-    ])
-  ],
-  providers: [
-      { provide: Orders, useClass: AuthorizeInterceptor, multi: true}
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        HttpClientModule,
+        StorageServiceModule ,
+        ApiAuthorizationModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot([
+            { path: '', component: HomeComponent, pathMatch: 'full' },
+            { path: 'counter', component: CounterComponent },
+            { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+            { path: 'categories', component: CategoriesComponent }, // canActivate: [AuthorizeGuard] },
+            { path: 'customers', component: CustomersComponent },
+            { path: 'orders', component: OrdersComponent },
+            { path: 'products', component: ProductsComponent },
+            { path: 'products/:categoryId', component: ProductsComponent },
+            { path: 'productdetails/:productId', component: ProductDetailsComponent },
+            { path: 'cart', component: CartComponent },
+        ])
+    ],
+    providers: [
+        { provide: Orders, useClass: AuthorizeInterceptor, multi: true }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

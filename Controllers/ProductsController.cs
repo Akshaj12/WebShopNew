@@ -29,7 +29,7 @@ namespace webshop.Controllers
             return await _context.Products.ToListAsync();
         }
 
-        // GET: api/Products/5
+        //// GET: api/Products/5
         //[HttpGet("{id}")]
         //public async Task<ActionResult<Product>> GetProduct(int id)
         //{
@@ -43,7 +43,7 @@ namespace webshop.Controllers
         //    return product;
         //}
 
-        // GET: api/Products/6
+        //GET: api/Products/6
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct(int id)
         {
@@ -60,7 +60,7 @@ namespace webshop.Controllers
             return tlistFiltered;
         }
 
-       
+
         // PUT: api/Products/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
@@ -123,3 +123,5 @@ namespace webshop.Controllers
         }
     }
 }
+
+

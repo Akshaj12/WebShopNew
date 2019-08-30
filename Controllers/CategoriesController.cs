@@ -30,18 +30,35 @@ namespace webshop.Controllers
             return asyncTask;
         }
 
-        // GET: api/Categories/5
+        //// GET: api/Categories/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Category>> GetCategory(int id)
+        //{
+        //    var category = await _context.Categories.FindAsync(id);
+
+        //    if (category == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return category;
+        //}
+
+        //GET: api/Categories/6
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<IEnumerable<Product>>> GetCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
-            if (category == null)
+            List<Product> tlistFiltered = new List<Product>();
+            List<Product> products = await _context.Products.ToListAsync();
+            foreach (Product product in products)
             {
-                return NotFound();
-            }
+                if (product.ParentCategoryId == id)
+                {
+                    tlistFiltered.Add(product);
+                }
 
-            return category;
+            }
+            return tlistFiltered;
         }
 
         // PUT: api/Categories/5
@@ -106,3 +123,5 @@ namespace webshop.Controllers
         }
     }
 }
+
+

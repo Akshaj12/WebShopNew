@@ -10,7 +10,7 @@
   <tr>
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" autocomplete="off">
 
-      <div class="cart-item" *ngFor="let item of items">
+      <div class="cart-item" *ngFor="let item of items; index as cartItem">
   <tr>
     <strong>Name:</strong> &nbsp;&nbsp;
     <span>{{ item.name }}</span>&nbsp;&nbsp;
@@ -27,6 +27,7 @@
     </strong>&nbsp;&nbsp;
     <span>{{ item.quantity }}</span>&nbsp;&nbsp;
   </tr>
+
   &nbsp;&nbsp;&nbsp;&nbsp;
   <select formControlName="name">
     <option disabled>Select Oppo Suits</option>
@@ -45,6 +46,7 @@
     <option>Choose card detail</option>
     <option *ngFor="let detail of cardDetails">{{detail}}</option>
   </select>-->
+  <button (click)="onRemove(cartItem)">Remove Item</button>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <strong>

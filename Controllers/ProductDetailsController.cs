@@ -30,18 +30,18 @@ namespace webshop.Controllers
 
         // GET: api/ProductDetails/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDetails>> GetProductDetails(int id)
+        public async Task<ActionResult<Product>> GetProductDetails(int id)
         {
-           var product =  await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
 
-            ProductDetails productDetails = new ProductDetails(product.Id, product.Name, product.Price,product.Description);
-            
-            if (productDetails == null)
-            {
-                return NotFound();
-            }
+            //ProductDetails productDetails = new ProductDetails(product.Id, product.Name, product.Price,product.Description);
 
-            return productDetails;
+            //if (productDetails == null)
+            //{
+            //    return NotFound();
+            //}
+
+            return product;
         }
 
         // PUT: api/ProductDetails/5
@@ -106,3 +106,4 @@ namespace webshop.Controllers
         }
     }
 }
+

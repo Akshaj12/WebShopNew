@@ -1,20 +1,26 @@
-import { Injectable, Inject} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { OrdersComponent } from './orders/orders.component';
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CartService {
+export class CartService{
     items: CartItem[] = [];
     formData: OrdersComponent;
     rootURL;
     order: Order;
+    
+       
     addToCart(product) {
-        this.items.push(product);
-        console.log(this.items);
-    } 
         
+        this.items.push(product);
+        //this.storage.get(this.STORAGE_KEY).push(product);
+             
+        console.log(this.items);
+    }
+
+    
     getItems() {
         return this.items;
     }
@@ -23,19 +29,20 @@ export class CartService {
         this.items = [];
         return this.items;
     }
-    }
+}
+
 
 export interface Product {
     id: number,
     name: string,
     description: string,
-    price: number,
-    parentCateogeryId : number,
+    price: number,    image: string,
+    parentCategoryId: number,
 }
 //export interface Customer {
 //    id: number,
 //    name: string,
-   
+
 //}
 export interface CartItem {
     product: Product,
@@ -46,7 +53,7 @@ export interface CartItem {
 interface Order {
     Id: number;
     Status: string;
-     DeliveryAddress: string;
+    DeliveryAddress: string;
     BillingAddress: string;
     OrderTime: string;
 }
@@ -71,7 +78,9 @@ export class Orders {
         this.OrderTime = orderTime;
     }
 
-    
+
 }
+
+
 
 
