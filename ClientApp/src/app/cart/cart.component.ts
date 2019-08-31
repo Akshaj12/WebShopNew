@@ -81,7 +81,12 @@ export class CartComponent implements OnInit{
     onRemove(cartItem) {
         var storedNames = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
         this.items = storedNames;
-        this.items.splice(cartItem);
+        if (cartItem == 0) {
+            this.items.shift();
+        } else {
+            this.items.splice(cartItem);
+        }
+        
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.items));
        
     }
