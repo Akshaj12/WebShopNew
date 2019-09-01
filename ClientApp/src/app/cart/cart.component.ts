@@ -39,7 +39,7 @@ export class CartComponent implements OnInit{
         this.oppoSuits = ['Men', 'Women', 'Boys', 'Girls'];
         this.sizes = [34, 36, 38, 40, 42];
         this.colors = ['Black', 'Red', 'Brown', 'White', 'Navy blue'];
-        this.cardDetails = ['Master', 'Visa', 'Debit', 'Swish'];
+        this.cardDetails = ['Master', 'Visa', 'Debit'];
         var storedNames = JSON.parse(localStorage.getItem(this.STORAGE_KEY));
         this.items = storedNames;
         //this.items = this.cartService.getItems();
@@ -53,16 +53,16 @@ export class CartComponent implements OnInit{
     }
     onSubmit(checkoutForm)
     {
-       // var address = (<HTMLInputElement>document.getElementById("address")).value;
-        //var name = (<HTMLInputElement>document.getElementById("name")).value;
-       // var cardNumber = (<HTMLInputElement>document.getElementById("cardNumber")).value; 
+        var address = (<HTMLInputElement>document.getElementById("address")).value;
+        var name = (<HTMLInputElement>document.getElementById("name")).value;
+        var cardNumber = (<HTMLInputElement>document.getElementById("cardNumber")).value; 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         localStorage.clear();
         let dateTime = new Date();
         var obj = {};
-        obj['status'] = "Delivered";
-        obj['deliveryAddress'] = "Gothengurg";
-        obj['billingAddress'] = "Gothengurg, Sweden";
+        obj['status'] = "Ordered";
+        obj['deliveryAddress'] = address;
+        obj['billingAddress'] = address;
         obj['orderTime'] = dateTime.toLocaleString();
         obj['products'] = null;
         //let obj: Order = JSON.parse('{"status": "Delivered", "deliveryAddress": address,"billingAddress": address,"orderTime": "9:00","products": null}');

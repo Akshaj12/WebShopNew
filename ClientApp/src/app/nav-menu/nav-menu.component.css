@@ -13,6 +13,12 @@ html {
   }
 }
 
+.bg-blue{
+  background-color:rgba(38, 221, 178, 0.94);
+
+}
+
+
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
