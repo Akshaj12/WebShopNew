@@ -24,14 +24,13 @@ export class OrdersComponent implements OnInit {
 }
 
 export interface Order{
-  Id: number,
-  Status: string,
-  CustomerId: number,
-  DeliveryAddressId: string,
-  BillingAddressId: string,
-  OrderTime: string,
-
-
+  id: number,
+    status: string,
+    deliveryAddress: string,
+    billingAddress: string,
+    orderTime: string,
+    products:null
+        
   //date: string;
   //temperatureC: number;
   //temperatureF: number;

@@ -11,12 +11,11 @@ namespace webshop.Models
     {
        public int Id { get; set; }
       public string Status { get; set; }
-     // public Customer Customer { get; set; }
+     
       public string DeliveryAddress { get; set; }
       public string BillingAddress { get; set; }
-      //[DataType(DataType.Date)]
+      
       public string OrderTime { get; set; }
-
 
       public ICollection<OrderItem> Products { get; set; }
     }

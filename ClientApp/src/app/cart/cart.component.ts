@@ -53,16 +53,17 @@ export class CartComponent implements OnInit{
     }
     onSubmit(checkoutForm)
     {
-        var address = (<HTMLInputElement>document.getElementById("address")).value;
-        var name = (<HTMLInputElement>document.getElementById("name")).value;
-        var cardNumber = (<HTMLInputElement>document.getElementById("cardNumber")).value; 
+       // var address = (<HTMLInputElement>document.getElementById("address")).value;
+        //var name = (<HTMLInputElement>document.getElementById("name")).value;
+       // var cardNumber = (<HTMLInputElement>document.getElementById("cardNumber")).value; 
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        localStorage.clear();   
+        localStorage.clear();
+        let dateTime = new Date();
         var obj = {};
         obj['status'] = "Delivered";
-        obj['deliveryAddress'] = address;
-        obj['billingAddress'] = address;
-        obj['orderTime'] = "9:00";
+        obj['deliveryAddress'] = "Gothengurg";
+        obj['billingAddress'] = "Gothengurg, Sweden";
+        obj['orderTime'] = dateTime.toLocaleString();
         obj['products'] = null;
         //let obj: Order = JSON.parse('{"status": "Delivered", "deliveryAddress": address,"billingAddress": address,"orderTime": "9:00","products": null}');
         this.https.post('https://localhost:44323/api/Orders', obj).subscribe(
@@ -70,7 +71,7 @@ export class CartComponent implements OnInit{
             error => console.error("couldn't post because", error)
         );
 
-        //this.checkoutForm.reset();
+        this.checkoutForm.reset();
 
      
 
