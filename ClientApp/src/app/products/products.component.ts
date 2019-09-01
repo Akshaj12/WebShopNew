@@ -25,10 +25,18 @@ export class ProductsComponent implements OnInit {
             this.categoryNumber = + params.get('categoryId');
         });
         this.categoryNumber++;
-        http.get<Product[]>(baseUrl + 'api/products/' + this.categoryNumber).subscribe(result => {
-            this.products = result;
-            console.log(result);
-        }, error => console.error(error));
+        if (this.categoryNumber == 101) {
+            http.get<Product[]>(baseUrl + 'api/products/').subscribe(result => {
+                this.products = result;
+                console.log(result);
+            }, error => console.error(error));
+        } else {
+            http.get<Product[]>(baseUrl + 'api/products/' + this.categoryNumber).subscribe(result => {
+                this.products = result;
+                console.log(result);
+            }, error => console.error(error));
+        }
+        
     }
 
 
